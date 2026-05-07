@@ -12,11 +12,11 @@ class Viewpage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lime.shade400,
+        backgroundColor: const Color.fromARGB(255, 181, 198, 32),
         title: Text(
           "To-Do List",
           style: TextStyle(
-            fontSize: 25,
+            fontSize: 28,
             color: Colors.black,
             fontWeight: FontWeight.w700,
           ),
@@ -29,7 +29,11 @@ class Viewpage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: RadialGradient(
-            colors: [Colors.lime.shade300, Colors.white],
+            colors: [
+              Colors.lime.shade600,
+              Colors.lime.shade400,
+              Colors.lime.shade300,
+            ],
           ),
         ),
         child: Column(
@@ -43,7 +47,7 @@ class Viewpage extends StatelessWidget {
                     child: TextField(
                       controller: titletextcont,
                       decoration: InputDecoration(
-                        fillColor: Colors.lime.shade300,
+                        fillColor: Colors.lime.shade200,
                         filled: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -80,22 +84,28 @@ class Viewpage extends StatelessWidget {
                   final todo = taskwatch.tasks[index];
                   return ListTile(
                     title: Text(
-                      todo.title,
+                      todo.titles,
                       style: TextStyle(
+                        fontSize: 22,
                         decoration: todo.isDone
                             ? TextDecoration.lineThrough
                             : null,
                       ),
                     ),
                     leading: Checkbox(
+                      checkColor: Colors.lime.shade900,
+                      activeColor: Colors.lime.shade200,
                       value: todo.isDone,
                       onChanged: (value) {
                         context.read<Controller>().toggleDonee(todo);
                       },
                     ),
-                    trailing: IconButton(onPressed: () {
-                      context.read<Controller>().toggledelete(todo);
-                    }, icon: Icon(Icons.delete_outline_outlined))
+                    trailing: IconButton(
+                      onPressed: () {
+                        context.read<Controller>().toggledelete(todo);
+                      },
+                      icon: Icon(Icons.delete_outline_outlined),
+                    ),
                   );
                 },
               ),

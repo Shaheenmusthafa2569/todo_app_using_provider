@@ -7,7 +7,7 @@ class Controller extends ChangeNotifier {
 
   bool? get isDone => null;
   void addTask(String title) {
-    _tasks.add(Task(title: title));
+    _tasks.add(Task(titles: title));
     notifyListeners();
   }
 
@@ -15,7 +15,8 @@ class Controller extends ChangeNotifier {
     checkdone.toggleDone();
     notifyListeners();
   }
-  void toggledelete(Task deletetask){
+
+  void toggledelete(Task deletetask) {
     _tasks.remove(deletetask);
     notifyListeners();
   }
